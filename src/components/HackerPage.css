@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap');
+
+.hacker-container {
+    min-height: 100vh;
+    background: #000000;
+    color: #ff0000;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hacker-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, #ff000020 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #ff000020 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, #ff000020 0%, transparent 50%);
+    z-index: 1;
+}
+
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.15;
+    font-size: 12px;
+    line-height: 12px;
+    overflow: hidden;
+    color: #ff0000;
+    white-space: pre-wrap;
+    animation: matrix-fall 20s linear infinite;
+}
+
+@keyframes matrix-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+.hacker-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 50px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+}
+
+.hacker-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px #ff0000;
+    font-weight: 700;
+    letter-spacing: 3px;
+    animation: danger-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes danger-glow {
+    0% {
+        text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+        color: #ff0000;
+    }
+    100% {
+        text-shadow: 0 0 30px #ff4444, 0 0 60px #ff0000, 0 0 80px #ff0000;
+        color: #ff4444;
+    }
+}
+
+.warning-icon {
+    font-size: 3rem;
+    color: #ff4444;
+    margin: 20px 0;
+    animation: warning-pulse 1s infinite;
+}
+
+@keyframes warning-pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #ff0000);
+    }
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px #ff0000) drop-shadow(0 0 30px #ff4444);
+    }
+}
+
+.hacker-message {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.danger-text {
+    color: #ff4444;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: danger-flicker 0.5s infinite;
+}
+
+@keyframes danger-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.terminal-line {
+    font-size: 0.9rem;
+    margin: 8px 0;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    color: #ff6666;
+    opacity: 0;
+    animation: terminal-appear 0.5s ease-in forwards;
+}
+
+.terminal-line:nth-child(7) { animation-delay: 1s; }
+.terminal-line:nth-child(8) { animation-delay: 1.5s; }
+.terminal-line:nth-child(9) { animation-delay: 2s; }
+.terminal-line:nth-child(10) { animation-delay: 2.5s; }
+.terminal-line:nth-child(11) { animation-delay: 3s; }
+.terminal-line:nth-child(12) { animation-delay: 3.5s; }
+
+@keyframes terminal-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.terminal-section {
+    background: rgba(20, 0, 0, 0.8);
+    border: 1px solid #ff3333;
+    border-radius: 3px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: left;
+    font-size: 0.85rem;
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.back-button {
+    background: linear-gradient(45deg, #330000, #660000);
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    padding: 12px 25px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.back-button:hover::before {
+    left: 100%;
+}
+
+.back-button:hover {
+    background: linear-gradient(45deg, #660000, #990000);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.system-breach {
+    color: #ff3333;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    opacity: 0.8;
+}
